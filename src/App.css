@@ -5,6 +5,17 @@
   text-align: center;
 }
 
+.title {
+  position: fixed;
+  top: 20px;
+  left:600px;
+  font-size: 2rem;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  z-index: 10;
+}
+
+
 .logo {
   height: 6em;
   padding: 1.5em;
