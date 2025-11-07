@@ -57,12 +57,30 @@ export default function Square() {
     };
     animate();
 
+    const handleResize = () => {
+      const width = mount.clientWidth;
+      const height = mount.clientHeight;
+
+      renderer.setSize(width, height);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+    };
+    window.addEventListener('resize', handleResize);
 
     camera.position.z = 4;
     renderer.render(scene, camera);
 
     return () => {
-      mount.removeChild(renderer.domElement);
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(frameId);
+      if (mount) {
+        mount.removeChild(renderer.domElement);
+      }
+      geometry.dispose();
+      material.dispose();
+      edges.dispose();
+      lineMaterial.dispose();
+      renderer.dispose();
     };
   }, []);
 
