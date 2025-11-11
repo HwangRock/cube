@@ -32,24 +32,20 @@ export default function Square() {
       roughness: 0.4,
     });
     const box = new THREE.Mesh(geometry, material);
-    box.rotation.x = 0.4;
-    box.rotation.y = 0.6;
+    box.rotation.x = 0;
+    box.rotation.y = 0;
     scene.add(box);
 
     const edges = new THREE.EdgesGeometry(geometry);
     const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff });
     const line = new THREE.LineSegments(edges, lineMaterial);
-    line.rotation.x = 0.4;
-    line.rotation.y = 0.6;
+    line.rotation.x = 0;
+    line.rotation.y = 0;
     scene.add(line);
 
     const controls = new OrbitControls(camera, renderer.domElement);
     let frameId;
     const animate = () => {
-      box.rotation.y += 0.005;
-      box.rotation.x += 0.002;
-      line.rotation.x += 0.002;
-      line.rotation.y += 0.005;
 
       controls.update();
       renderer.render(scene, camera);
